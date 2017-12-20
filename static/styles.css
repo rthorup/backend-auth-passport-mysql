@@ -1,0 +1,104 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: grey;
+  margin-top: -10px;
+}
+
+.navItem {
+  flex: 1;
+  padding: 1em;
+  text-align: center;
+}
+
+.navItem:hover {
+  background-color: #bec6d3;
+}
+.navItemBlank {
+  flex:1;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+a:visited {
+  color:white;
+}
+.bigForm {
+  width: 30%;
+  margin: 6em auto;
+  background-color: white;
+  color: black;
+  padding: .2em;
+  text-align: center;
+}
+input {
+  width: 70%;
+  margin: 1em auto;
+  text-align: center;
+  padding: .5em;
+  font-size: 1em;
+}
+label {
+  width: 70%;
+  text-align: center;
+  margin: .5em;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 0;
+}
+footer {
+  margin: 2em;
+  color:white;
+  text-align: center;
+}
+.notification {
+  margin: .5em auto;
+  text-align: center;
+  background-color: red;
+  padding: .5em;
+  border: 2px solid white;
+  font-size: 2em;
+  font-weight: bold;
+  width: 70%;
+}
+.button {
+  margin: .5em;
+  padding: .5em;
+  font-family: arial;
+  background-color: white;
+}
+
+.button:hover {
+  background-color: #99b2db;
+}
+
+.form {
+  width: 50%;
+  background-color: white;
+  margin: 10em auto;
+  padding: .5em;
+  color: black;
+  text-align: center;
+}
+
+.login {
+  width: 70%;
+  margin: .5em auto;
+}
+.mainPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.image {
+  flex: 1;
+}

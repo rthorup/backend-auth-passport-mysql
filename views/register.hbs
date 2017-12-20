@@ -1,0 +1,46 @@
+{{>header}}
+{{#if errors}}
+  {{#each errors}}
+  <div class="notification is-danger">
+    {{msg}}
+  </div>
+  {{/each}}
+{{/if}}
+<form method="POST" action="/register">
+<div class="bigForm">
+  <h1>Sign-up here!</h1>
+  <div class="field">
+    <label class="label">Username</label>
+    <div class="control">
+      <input class="input" type="text" name="username" placeholder="e.g. thorpusmaximus">
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label is-medium">Email</label>
+    <div class="control">
+      <input class="input is-medium" name="email" type="email" placeholder="e.g. alexsmith@gmail.com">
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Password</label>
+    <div class="control">
+      <input class="input" name="password" type="password" placeholder="blah blah blah">
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Confirm Password</label>
+    <div class="control">
+      <input class="input" name="passwordverify" type="password" placeholder="blah blah blah">
+    </div>
+  </div>
+
+  <button class="button is-success">
+     Register
+  </button>
+</div>
+</form>
+
+{{>footer}}
