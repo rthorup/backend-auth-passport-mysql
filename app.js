@@ -3,6 +3,7 @@ const express = require('express');
 const fs = require('fs');
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
+//needed to help validate user input, check, sanitize etc.
 const {
   check,
   validationResult
@@ -40,8 +41,24 @@ app.get('/login', (req, res) => {
 })
 app.post('/register', [
   check('username').isLength({
-    min: 1
-  }).withMessage('Username required')
+    min: 4,
+    max: 45
+  }).withMessage('Username must be 4-45 characters.'),
+  check('email').isEmail().withMessage('Invalid email address'),
+  check('email').isLength({
+    min: 6,
+    max: 100
+  }).withMessage('Email address must be between 4-100 characters.'),
+  check('password').isLength({
+    min: 8,
+    max: 30
+  }).withMessage('Password must be between 8-30 characters.'), check("password").matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,}$/, "i").withMessage("Password must contain one lowercase character, one uppercase character, a number, and a special character."), check('passwordverify').isLength({
+    min: 8,
+    max: 30
+  }).withMessage('Password must be between 8-100 characters long.'),
+  check('passwordverify').custom((value, {
+    req
+  }) => value === req.body.password).withMessage('Passwords do not match')
 ], (req, res) => {
   const err = validationResult(req)
   if (!err.isEmpty()) {
@@ -52,7 +69,7 @@ app.post('/register', [
     })
     return;
   }
-
+  // ATat123!
   console.log(req.body)
   let username = req.body.username,
     email = req.body.email,
