@@ -6,6 +6,11 @@
   </div>
   {{/each}}
 {{/if}}
+{{#if error}}
+  <div class="notification is-danger">
+    {{error}}
+  </div>
+{{/if}}
 <form method="POST" action="/register">
 <div class="bigForm">
   <h1>Sign-up here!</h1>
