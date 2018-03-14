@@ -30,11 +30,11 @@ app.use(bodyParser.urlencoded({
 }));
 
 var options = {
-  host: 'localhost',
+  host: 'sql9.freemysqlhosting.net',
   port: 3306,
-  user: 'root',
-  password: 'drag01n1',
-  database: 'passport'
+  user: 'sql9226608',
+  password: 'BsNNEbjgS2',
+  database: 'sql9226608'
 };
 
 var sessionStore = new MySQLStore(options);
@@ -58,8 +58,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
       })
     } else {
       const hash = results[0].password.toString();
-      // console.log(hash);
-      // console.log(password);
+
       bcrypt.compare(password, hash, function(err, res) {
         if (res === true) {
           done(null, {
@@ -98,13 +97,13 @@ app.get('/logout', (req, res) => {
 
 app.get('/profile', isAuthenticatedMiddleware(), (req, res) => {
   // console.log(req.user);
-  console.log(req.user);
+  // console.log(req.user);
   // console.log(req.isAuthenticated());
   db.query('SELECT * FROM users WHERE id = ?', req.user.user, function(err, results, fields) {
     let username = results[0].username
-    console.log(username);
+    // console.log(username);
     let email = results[0].email
-    console.log(email);
+    // console.log(email);
     res.render('profile.hbs', {
       username: username,
       email: email
@@ -156,8 +155,8 @@ app.post('/register', [
     })
     return;
   }
-  // ATat123!
-  console.log(req.body)
+
+  // console.log(req.body)
   let username = req.body.username,
     email = req.body.email,
     password = req.body.password
@@ -181,7 +180,7 @@ app.post('/register', [
           if (err) {
             res.send('hey, database broken. whoops')
           } else {
-            console.log(results);
+            // console.log(results);
             req.login(results[0], function(err) {
               res.redirect('/profile')
             })
@@ -191,7 +190,7 @@ app.post('/register', [
 
     })
   });
-  // res.send('working')
+
 })
 
 passport.serializeUser(function(user, done) {
