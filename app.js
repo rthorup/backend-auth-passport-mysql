@@ -30,11 +30,11 @@ app.use(bodyParser.urlencoded({
 }));
 
 var options = {
-  host: 'sql9.freemysqlhosting.net',
-  port: 3306,
-  user: 'sql9226608',
-  password: 'BsNNEbjgS2',
-  database: 'sql9226608'
+  host: ,
+  port: ,
+  user: ,
+  password: ,
+  database: ,
 };
 
 var sessionStore = new MySQLStore(options);
