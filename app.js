@@ -76,26 +76,26 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-hbs.registerPartials('https://pacific-mesa-47141.herokuapp.com/' + '/views/partial');
+hbs.registerPartials(__dirname + '/views/partial');
 // homepage
-app.get('https://pacific-mesa-47141.herokuapp.com/', (req, res) => {
+app.get('/', (req, res) => {
   res.render('home.hbs', {
     title: 'Home Page',
     paragraph: 'we are doing shit that I dont understand',
   });
 });
 
-app.get('https://pacific-mesa-47141.herokuapp.com/register', isLoggedin(), (req, res) => {
+app.get('/register', isLoggedin(), (req, res) => {
   res.render('register.hbs', {});
 });
 
-app.get('https://pacific-mesa-47141.herokuapp.com/logout', (req, res) => {
+app.get('/logout', (req, res) => {
   req.logout();
   req.session.destroy();
   res.redirect('/login')
 });
 
-app.get('https://pacific-mesa-47141.herokuapp.com/profile', isAuthenticatedMiddleware(), (req, res) => {
+app.get('/profile', isAuthenticatedMiddleware(), (req, res) => {
   // console.log(req.user);
   // console.log(req.user);
   // console.log(req.isAuthenticated());
@@ -112,19 +112,19 @@ app.get('https://pacific-mesa-47141.herokuapp.com/profile', isAuthenticatedMiddl
 
 });
 
-app.get('https://pacific-mesa-47141.herokuapp.com/login', (req, res) => {
+app.get('/login', (req, res) => {
   res.render('login.hbs', {
     message: req.flash('error')
   })
 })
 
-app.post('https://pacific-mesa-47141.herokuapp.com/login', passport.authenticate('local', {
+app.post('/login', passport.authenticate('local', {
   successRedirect: '/profile',
   failureRedirect: '/login',
   failureFlash: true
 }));
 
-app.post('https://pacific-mesa-47141.herokuapp.com/register', [
+app.post('/register', [
   check('username').isLength({
     min: 4,
     max: 45
@@ -207,7 +207,7 @@ function isAuthenticatedMiddleware() {
       //moves on to the next part of the function.
       next();
     } else {
-      res.redirect('https://pacific-mesa-47141.herokuapp.com/login')
+      res.redirect('/login')
     }
   }
 }
@@ -221,6 +221,6 @@ function isLoggedin() {
     }
   }
 }
-app.listen(process.env.PORT || 3000, () => {
-  console.log('listening on port 3000');
+app.listen(3001, () => {
+  console.log('listening on port 3001');
 });
