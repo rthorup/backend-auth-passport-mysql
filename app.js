@@ -76,7 +76,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-hbs.registerPartials(__dirname + '/views/partial');
+hbs.registerPartials('https://pacific-mesa-47141.herokuapp.com/' + '/views/partial');
 // homepage
 app.get('/', (req, res) => {
   res.render('home.hbs', {
