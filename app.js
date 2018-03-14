@@ -78,24 +78,24 @@ app.use(passport.session());
 
 hbs.registerPartials('https://pacific-mesa-47141.herokuapp.com/' + '/views/partial');
 // homepage
-app.get('/', (req, res) => {
+app.get('https://pacific-mesa-47141.herokuapp.com/', (req, res) => {
   res.render('home.hbs', {
     title: 'Home Page',
     paragraph: 'we are doing shit that I dont understand',
   });
 });
 
-app.get('/register', isLoggedin(), (req, res) => {
+app.get('https://pacific-mesa-47141.herokuapp.com/register', isLoggedin(), (req, res) => {
   res.render('register.hbs', {});
 });
 
-app.get('/logout', (req, res) => {
+app.get('https://pacific-mesa-47141.herokuapp.com/logout', (req, res) => {
   req.logout();
   req.session.destroy();
   res.redirect('/login')
 });
 
-app.get('/profile', isAuthenticatedMiddleware(), (req, res) => {
+app.get('https://pacific-mesa-47141.herokuapp.com/profile', isAuthenticatedMiddleware(), (req, res) => {
   // console.log(req.user);
   // console.log(req.user);
   // console.log(req.isAuthenticated());
@@ -112,19 +112,19 @@ app.get('/profile', isAuthenticatedMiddleware(), (req, res) => {
 
 });
 
-app.get('/login', (req, res) => {
+app.get('https://pacific-mesa-47141.herokuapp.com/login', (req, res) => {
   res.render('login.hbs', {
     message: req.flash('error')
   })
 })
 
-app.post('/login', passport.authenticate('local', {
+app.post('https://pacific-mesa-47141.herokuapp.com/login', passport.authenticate('local', {
   successRedirect: '/profile',
   failureRedirect: '/login',
   failureFlash: true
 }));
 
-app.post('/register', [
+app.post('https://pacific-mesa-47141.herokuapp.com/register', [
   check('username').isLength({
     min: 4,
     max: 45
@@ -207,7 +207,7 @@ function isAuthenticatedMiddleware() {
       //moves on to the next part of the function.
       next();
     } else {
-      res.redirect('/login')
+      res.redirect('https://pacific-mesa-47141.herokuapp.com/login')
     }
   }
 }
