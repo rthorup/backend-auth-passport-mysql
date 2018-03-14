@@ -55,9 +55,12 @@ label {
   padding: 0;
 }
 footer {
-  margin: 2em;
+  margin-top: 2em;
+  padding: .3em;
   color:white;
   text-align: center;
+  background-color: grey;
+  width: 100%;
 }
 .notification {
   margin: .5em auto;
